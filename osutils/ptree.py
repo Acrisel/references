@@ -8,6 +8,11 @@ Created on Aug 9, 2017
 import os
 
 def realname(path, root=None):
+    ''' joins root with path, if root is provided.
+        Then check is it is a symlink.  If it is, return 
+        a string representing the link.  Otherwise, return 
+        basename or path.
+    '''
     if root is not None:
         path=os.path.join(root, path)
     result=os.path.basename(path)
@@ -17,6 +22,12 @@ def realname(path, root=None):
     return result
 
 def ptree(startpath, depth=-1): 
+    ''' prints directory tree in 'tree' structure.
+    
+    Args:
+        startpath: root path to start
+        depth: depth of tree to print; default: -1 which signals not limit
+    '''
     prefix=0
     if startpath != '/':
         if startpath.endswith('/'): startpath=startpath[:-1]
