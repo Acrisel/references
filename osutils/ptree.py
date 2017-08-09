@@ -29,7 +29,7 @@ def ptree(startpath, depth=-1):
             indent = '|   ' * (level-1) + '|-- '
         subindent = '|   ' * (level) + '|-- '
         print('{}{}/'.format(indent, realname(root)))
-        # print dir only is symbolic link
+        # print dir only if symbolic link; otherwise, will be printed as root
         for d in dirs:
             if os.path.islink(os.path.join(root, d)):
                 print('{}{}'.format(subindent, realname(d, root=root)))
